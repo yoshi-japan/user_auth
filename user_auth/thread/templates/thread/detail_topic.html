@@ -1,0 +1,25 @@
+{% extends 'base/home.html' %}
+{% block title %}トピック作成 - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="ui grid stackable">
+    <div class="eleven wide column">
+        <div class="ui breadcrumb">
+            <a href="{% url 'base:top' %}" class="section">TOP</a>
+            <i class="right angle icon divider"></i>
+            <a class="section">{{topiccc.category.name}}</a>
+            <i class="right angle icon divider"></i>
+            <a class="active section">{{topiccc.title}}</a>
+        </div>
+        <div class="ui segment">
+            <div class="content">
+                <div class="header"><h3>{{topiccc.title}}</h3></div>
+                <p>{{topiccc.user_name}} - {{topiccc.created}}</p>
+                <div class="ui secondary segment">
+                    <p><pre>{{topiccc.message}}</pre></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'base/sidebar.html' %}
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base/home.html' %}
+<!--one of built-in method in django template {{ block.super }}  how do we use in views.py?-->
+<!--this calls super's content(parent content) here block.super is enclosed by title block-->
+<!--so block super returns home.html's contents THAT enclosed by title block.(in this case, learning Django)-->
+{% block title %}ITについて切磋琢磨する掲示板 - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="ui grid stackable">
+    <div class="eleven wide column">
+        <div class="ui breadcrumb">
+            <a class="section">TOP</a>
+            <i class="right angle icon divider"></i>
+            <a class="section">category</a>
+            <i class="right angle icon divider"></i>
+            <div class="active section">thread</div>
+        </div>
+        <div class="ui segment">
+            <div class="content">
+                <div class="header"><h3>新着スレッド</h3></div>
+                <div class="ui divided items">
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">
+<!--                                thread = app_name on urls.py, topic name parameter on urls.py-->
+                                <a href="{% url 'thread:topic' pk=topic.id %}"><h4>{{topic.title}}</h4></a>
+                            </div>
+                            <div class="meta">
+                                <span class="name">{{topic.user_name}}</span>
+                                <span class="date">{{topic.created}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">
+                                <a><h4>dummy thread</h4></a>
+                            </div>
+                            <div class="meta">
+                                <span class="name">投稿者名</span>
+                                <span class="date">2019-2-1 00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">
+                                <a><h4>dummy thread</h4></a>
+                            </div>
+                            <div class="meta">
+                                <span class="name">投稿者名</span>
+                                <span class="date">2019-2-1 00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <div class="header">
+                                <a><h4>dummy thread</h4></a>
+                            </div>
+                            <div class="meta">
+                                <span class="name">投稿者名</span>
+                                <span class="date">2019-2-1 00:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--    部分的に作ったsidebar.htmlをインクルード
+するだけです。これで必要な場合のみインクルード
+すれば使えるように別部品化できました。-->
+    {% include 'base/sidebar.html' %}
+</div>
+{{ simple_text }}
+{% endblock %}
